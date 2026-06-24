@@ -19,3 +19,5 @@ Use the app online at: ** **, or compile it locally for better performace:
   cd nanoindentation-explorer  
   pip install -r requirements.txt  
   streamlit run app.py  
+
+![Illustration of the Nanoindentation Explorer interface](images/nano.png)
