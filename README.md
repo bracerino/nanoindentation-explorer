@@ -13,7 +13,6 @@ File names like `s40_f46_g15_000_DYN.txt` are decoded automatically into
 
 Use the app online at: **[link](https://nanoindentation.streamlit.app/)**, or compile it locally for a better performace:
 
-  ## Run
   ```bash
   git clone https://github.com/bracerino/nanoindentation-explorer.git  
   cd nanoindentation-explorer  
