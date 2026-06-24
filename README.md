@@ -9,9 +9,9 @@ Upload one or many `*_DYN.txt` files exported from Hysitron/Bruker instruments a
   - filter by sample / fluence / grain, and export the plotted curves to CSV.
 
 File names like `s40_f46_g15_000_DYN.txt` are decoded automatically into
-**sample / fluence / grain / measurement**.d ds
+**sample / fluence / grain / measurement**.
 
-Use the app online at: ** **, or compile it locally for a better performace:
+Use the app online at: **[link](https://nanoindentation.streamlit.app/)**, or compile it locally for a better performace:
 
   ## Run
   ```bash
