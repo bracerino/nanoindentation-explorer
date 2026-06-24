@@ -372,15 +372,19 @@ def main() -> None:
         help="Profiles are binned over depth to tame the ~17k raw points per file.",
     )
 
-    # If the file names carry no usable metadata, default to colouring by file.
+    # "Colour curves by" only applies to Per-measurement mode; the per-group
+    # modes always colour one curve per group.
     color_opts = ["grain", "fluence", "meas", "name"]
     has_metadata = any(p.grain != "?" for p in parsed)
-    color_by = st.sidebar.selectbox(
-        "Colour curves by",
-        options=color_opts,
-        index=color_opts.index("name") if not has_metadata else 0,
-        format_func={"grain": "Grain", "fluence": "Fluence", "meas": "Measurement", "name": "File"}.get,
-    )
+    if mode == "Per measurement":
+        color_by = st.sidebar.selectbox(
+            "Colour curves by",
+            options=color_opts,
+            index=color_opts.index("name") if not has_metadata else 0,
+            format_func={"grain": "Grain", "fluence": "Fluence", "meas": "Measurement", "name": "File"}.get,
+        )
+    else:
+        color_by = "grain"  # unused for colouring in per-group modes
 
     # For the per-group modes: aggregate by grain or by the custom groups.
     has_custom_groups = any(file_groups.get(p.name) for p in parsed)
@@ -694,7 +698,11 @@ def main() -> None:
         font=dict(size=18),  # base font for the whole figure
         xaxis_title=x_label,
         yaxis_title=y_label,
-        legend_title={"grain": "Grain", "fluence": "Fluence", "meas": "Measurement", "name": "File"}.get(color_by, color_by),
+        legend_title=(
+            {"grain": "Grain", "fluence": "Fluence", "meas": "Measurement", "name": "File"}.get(color_by, color_by)
+            if mode == "Per measurement"
+            else ("Group" if agg_by == "Custom group" else "Grain")
+        ),
         legend=dict(font=dict(size=16), title=dict(font=dict(size=17))),
         margin=dict(l=10, r=10, t=60, b=10),
         hovermode="closest",
