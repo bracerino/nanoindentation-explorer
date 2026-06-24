@@ -11,7 +11,7 @@ Upload one or many `*_DYN.txt` files exported from Hysitron/Bruker instruments a
 File names like `s40_f46_g15_000_DYN.txt` are decoded automatically into
 **sample / fluence / grain / measurement**.d ds
 
-Use the app online at: ** **, or compile it locally for better performace:
+Use the app online at: ** **, or compile it locally for a better performace:
 
   ## Run
   ```bash
@@ -20,5 +20,5 @@ Use the app online at: ** **, or compile it locally for better performace:
   pip install -r requirements.txt  
   streamlit run app.py  
   ```
-
+--
 ![Illustration of the Nanoindentation Explorer interface](images/nano.png)
